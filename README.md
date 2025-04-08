@@ -55,13 +55,15 @@ exports['native_notify']:ShowNotification({
     subtitle = '任务信息'  -- 可选副标题
 })
 
--- 复制图片中的Los Santos Transit通知
+-- 例子
 exports['native_notify']:ShowNotification({
     picture = 'CHAR_LS_TOURIST_BOARD',
     message = '我们绝不容忍在公共交通工具上的恐怖行为！',
     title = '洛圣都交通',
     subtitle = '旅游信息'
 })
+
+![通知示例](https://r2.fivemanage.com/o0SQp9T24AoAbL1nduWW2/native_notify.jpg)
 ```
 
 ### 服务器端使用示例
