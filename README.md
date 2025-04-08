@@ -63,8 +63,8 @@ exports['native_notify']:ShowNotification({
     subtitle = '旅游信息'
 })
 
-![通知示例](https://r2.fivemanage.com/o0SQp9T24AoAbL1nduWW2/native_notify.jpg)
 ```
+![通知示例](https://r2.fivemanage.com/o0SQp9T24AoAbL1nduWW2/native_notify.jpg)
 
 ### 服务器端使用示例
 
