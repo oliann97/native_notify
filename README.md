@@ -138,7 +138,6 @@ exports['native_notify']:SendNotificationToArea(coords, radius, {
 
 - `/testnotify [类型] [消息] [标题]` - 测试不同类型的通知 (客户端)
 - `/testpicnotify [图片] [消息] [标题] [副标题]` - 测试带图片的通知 (客户端)
-- `/testnotifyy` - 测试Los Santos Transit通知 (客户端，复制图片中的样式)
 - `/servernotify [玩家ID] [类型] [消息] [标题] [副标题]` - 从服务器发送通知 (仅限管理员)
 
 ## 许可证
