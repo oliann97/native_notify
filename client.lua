@@ -59,6 +59,8 @@ function ShowNotification(data)
     local notificationId
     if data.picture then
         notificationId = DrawNotificationWithPicture(data.picture, data.title, data.subtitle)
+    elseif data.url then
+        notificationId = DrawNotificationWithUrl(data.url, data.title, data.subtitle, data.message)
     elseif title ~= '' then
         SetNotificationMessage('CHAR_DEFAULT', 'CHAR_DEFAULT', flash, icon, title, subtitle)
         notificationId = DrawNotification(false, true)
@@ -136,6 +138,41 @@ function DrawNotificationWithPicture(picture, title, subtitle)
     end
 end
 
+function DrawNotificationWithUrl(url, title, subtitle, message)
+    if url == nil or url == '' then
+        return DrawNotificationWithPicture("CHAR_DEFAULT", title, subtitle)
+    end
+    
+    local txdName = "notification_" .. math.random(1000000)
+    local txd = CreateRuntimeTxd(txdName)
+    
+    local dui = CreateDui(url, 128, 128)
+    local duitxd = GetDuiHandle(dui)
+    
+    CreateRuntimeTextureFromDuiHandle(txd, "notification", duitxd)
+    
+    BeginTextCommandThefeedPost("STRING")
+    AddTextComponentSubstringPlayerName(message)
+    
+    title = title or ""
+    subtitle = subtitle or ""
+    
+    local notification
+    if title ~= "" then
+        EndTextCommandThefeedPostMessagetext(txdName, "notification", true, 1, title, subtitle)
+        notification = EndTextCommandThefeedPostTicker(false, true)
+    else
+        EndTextCommandThefeedPostMessagetext(txdName, "notification", false, 1, "", "")
+        notification = EndTextCommandThefeedPostTicker(false, false)
+    end
+    
+    Citizen.SetTimeout(10000, function()
+        DestroyDui(dui)
+    end)
+    
+    return notification
+end
+
 exports('ShowNotification', ShowNotification)
 
 RegisterCommand('testnotify', function(source, args, rawCommand)
@@ -170,5 +207,19 @@ RegisterCommand('testnotifyy', function(source, args, rawCommand)
         message = '我们绝不容忍在公共交通工具上的恐怖行为！',
         title = '洛圣都交通',
         subtitle = '旅游信息'
+    })
+end)
+
+RegisterCommand('testurlnotify', function(source, args, rawCommand)
+    local url = args[1] or 'https://r2.fivemanage.com/o0SQp9T24AoAbL1nduWW2/fivem.png'
+    local message = args[2] or '这是一条带URL图片的测试通知'
+    local title = args[3] or 'URL图片通知'
+    local subtitle = args[4] or '自定义图片'
+    
+    ShowNotification({
+        url = url,
+        message = message,
+        title = title,
+        subtitle = subtitle
     })
 end) 
