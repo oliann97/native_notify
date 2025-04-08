@@ -38,18 +38,21 @@ RegisterCommand('servernotify', function(source, args, rawCommand)
     local type = args[2] or 'info'
     local message = args[3] or '这是一条服务器通知'
     local title = args[4] or ''
+    local subtitle = args[5] or ''
     
     if not playerId or playerId == 0 then
         SendNotificationToAll({
             type = type,
             message = message,
-            title = title
+            title = title,
+            subtitle = subtitle
         })
     else
         SendNotificationToPlayer(playerId, {
             type = type,
             message = message,
-            title = title
+            title = title,
+            subtitle = subtitle
         })
     end
 end, true)
