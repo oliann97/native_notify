@@ -93,7 +93,7 @@ exports['native_notify']:ShowNotification({
 })
 
 ```
-![通知示例](https://r2.fivemanage.com/o0SQp9T24AoAbL1nduWW2/native_notify.jpg)
+![通知示例](https://r2.fivemanage.com/o0SQp9T24AoAbL1nduWW2/DesktopScreenshot2025.04.08-11.38.45.25.png)
 ![URL通知示例](https://r2.fivemanage.com/o0SQp9T24AoAbL1nduWW2/native_notify_url.png)
 ### 服务器端使用示例
 
